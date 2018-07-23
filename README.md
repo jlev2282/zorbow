@@ -1,2 +1,2 @@
 # zorbow
-The Galactice Game of Numbers!
+The Galactice Adventure of Numbers!
