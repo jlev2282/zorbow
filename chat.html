@@ -1,0 +1,152 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ZORBOW CHAT</title>
+    <!-- Added link to the jQuery library -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--cyborg bootstrap cdn-->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-4DAPMwiyOJv/C/LvTiUsW5ueiD7EsaAhwUKO0Llp+fWzT40XrmAbayhVP00bAJVa" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <!--this will be the chat application for Zorbow-->
+    <!--this needs to be mobile first-->
+    <!--mimic the setup of whatsApp-->
+    <!--header bar with Zorbow logo-->
+    <!--menu bar on right that lets you add group-->
+    <!--main panel will have headers "CHATS", "FRIENDS", "ROOMS"-->
+    <!--each tab will populate with data for each that will pop out a modal-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">ZORBOW</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">PROFILE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GAMES</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">CHAT <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACT US</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" placeholder="Search" type="text">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div class="container-fluid" style="border: solid;">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link chat_selection" data-toggle="tab" id="chat_tab" href="#chats" data-pick="chats">Chats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active chat_selection show" data-toggle="tab" id="room_tab" href="#rooms" data-pick="rooms">Rooms</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
+                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 39px, 0px);">
+                        <a class="dropdown-item chat_selection" data-toggle="tab" href="#dropdown1" data-pick="user">Chat with User</a>
+                        <a class="dropdown-item" data-toggle="tab" href="#dropdown2" data-pick="room">Create Room</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" data-toggle="tab" href="#dropdown3" data-pick="admin">Message Admin</a>
+                    </div>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade" id="chats">
+                    list of active chats for user to pick<form id="chat_form"></form>
+                </div>
+                <div class="tab-pane fade active show" id="rooms">
+                    <ol id="roomlist"></ol>
+                </div>
+                <div class="tab-pane fade" id="dropdown1">
+                    list of Users in which to start chat
+                </div>
+                <div class="tab-pane fade" id="dropdown2">
+                    <h5>Create Room</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="roomTitle">Room Title</label>
+                            <textarea class="form-control" id="roomTitle" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomCategorySelect">Room Category</label>
+                            <select class="form-control" id="roomCategorySelect">
+                                <option></option>
+                                <option>Addition</option>
+                                <option>Subtraction</option>
+                                <option>Multiplication</option>
+                                <option>Division</option>
+                                <option>General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomDescription">Room Description</label>
+                            <textarea class="form-control" id="roomDescription" rows="2"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-info" id="create_room">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="dropdown3">
+                    <h5>Contact Admin</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="contactAdmin">Topic</label>
+                            <select class="form-control" id="contactAdmin">
+                                <option>Congrats</option>
+                                <option>Complaint</option>
+                                <option>Suggestion</option>
+                                <option>Help</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminMessage">Message</label>
+                            <textarea class="form-control" id="adminMessage" rows="2"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="chat_stage">Display Chats Here</div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="chat.js"></script>
+</body>
+</html>
