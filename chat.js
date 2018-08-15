@@ -10,19 +10,21 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
+var rooms = database.ref("/rooms");
+
 
 //use this to make a call to database and get info for tab selected
 $(".chat_selection").on("click", function(event){
     thisEvent = event;
-    console.log(event);
-    console.log(thisEvent.currentTarget.dataset.pick);
+    // console.log(event);
+    // console.log(thisEvent.currentTarget.dataset.pick);
     //get the data from the user chats out of firebase
     //for each one create a button that has the chat name and users in chat
 
 });
 
+//will create a room and enter into firebase
 $("#create_room").on("click", function(event){
-    rooms = database.ref("/rooms");
 
     event.preventDefault();
 
@@ -32,7 +34,8 @@ $("#create_room").on("click", function(event){
 
     var r =confirm("Create room "+title+"?");
 
-    if (r == true) {
+    //only works in full browser, not mobile
+    //will assume true and create room
         var newRoom = {
             title: title,
             category: category,
@@ -40,11 +43,24 @@ $("#create_room").on("click", function(event){
         };
 
         rooms.push(newRoom);
-    } else {
+
+        $("#chat_stage").html("<a>The <a href='#rooms'"+title+"</a> room has been created. Head over to the 'Rooms' tab to use it.");
         $("#roomTitle").val("");
         $("#roomCategorySelect").val("");
         $("#roomDescription").val("");
-    }
+});
 
+$("#room_tab").on("click", function() {
+    $("#roomlist").empty();
+    rooms.orderByChild("title").on("child_added", function(data) {
+        chatroom = $("<li>").html("<a href='#'>"+data.val().title+"</a>");
+        $("#roomlist").prepend(chatroom);
+    });
+});
 
+rooms.on("value", function(snapshot) {
+    // console.log(snapshot.val());
+    $("#rooms").prepend(snapshot.val());
+}, function(error) {
+    console.log("Error: "+error.code);
 });
