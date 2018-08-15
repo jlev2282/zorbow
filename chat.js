@@ -9,3 +9,9 @@ var config = {
     messagingSenderId: "224909053616"
 };
 firebase.initializeApp(config);
+
+$("#chats").on("click", function(){
+    //get the data from the user chats out of firebase
+    //for each one create a button that has the chat name and users in chat
+
+})

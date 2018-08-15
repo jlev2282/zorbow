@@ -59,38 +59,88 @@
         <div class="container-fluid" style="border: solid;">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active show" data-toggle="tab" href="#home">Chats</a>
+                    <a class="nav-link" data-toggle="tab" id="chat_tab" href="#chats">Chats</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#profile">Rooms</a>
+                    <a class="nav-link active show" data-toggle="tab" id="room_tab" href="#rooms">Rooms</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 39px, 0px);">
-                        <a class="dropdown-item" href="#">Direct Chat</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" data-toggle="tab" href="#dropdown1" data-pick="user">Chat wtih User</a>
+                        <a class="dropdown-item" data-toggle="tab" href="#dropdown2" data-pick="room">Create Room</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
+                        <a class="dropdown-item" data-toggle="tab" href="#dropdown3" data-pick="admin">Message Admin</a>
                     </div>
                 </li>
             </ul>
             <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade active show" id="home">
-                    list of active chats for user
+                <div class="tab-pane fade" id="chats">
+                    list of active chats for user to pick<form id="chat_form"></form>
                 </div>
-                <div class="tab-pane fade " id="profile">
+                <div class="tab-pane fade active show" id="rooms">
                     list of public rooms the user can enter
                 </div>
                 <div class="tab-pane fade" id="dropdown1">
-                    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                    list of Users in which to start chat
                 </div>
                 <div class="tab-pane fade" id="dropdown2">
-                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+                    <h5>CREATE ROOM</h5>
+                    <form>
+=                        <div class="form-group">
+                            <label for="roomTitle">Room Description</label>
+                            <textarea class="form-control" id="roomTitle" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomCategorySelect">Room Category</label>
+                            <select class="form-control" id="roomCategorySelect">
+                                <option>Addition</option>
+                                <option>Subtraction</option>
+                                <option>Multiplication</option>
+                                <option>Division</option>
+                                <option>General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomDescription">Room Description</label>
+                            <textarea class="form-control" id="roomDescription" rows="2"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-info">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="dropdown3">
+                    <h5>Contact Admin</h5>
+                    <form>
+                        <div class="form-group">
+                            <label for="contactAdmin">Topic</label>
+                            <select class="form-control" id="contactAdmin">
+                                <option>Congrats</option>
+                                <option>Complaint</option>
+                                <option>Suggestion</option>
+                                <option>Help</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminMessage">Message</label>
+                            <textarea class="form-control" id="adminMessage" rows="2"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="container-fluid" id="chat_stage">Display Chats Here</div>
 
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
