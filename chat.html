@@ -59,15 +59,15 @@
         <div class="container-fluid" style="border: solid;">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" id="chat_tab" href="#chats">Chats</a>
+                    <a class="nav-link chat_selection" data-toggle="tab" id="chat_tab" href="#chats" data-pick="chats">Chats</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active show" data-toggle="tab" id="room_tab" href="#rooms">Rooms</a>
+                    <a class="nav-link active chat_selection show" data-toggle="tab" id="room_tab" href="#rooms" data-pick="rooms">Rooms</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 39px, 0px);">
-                        <a class="dropdown-item" data-toggle="tab" href="#dropdown1" data-pick="user">Chat wtih User</a>
+                        <a class="dropdown-item chat_selection" data-toggle="tab" href="#dropdown1" data-pick="user">Chat with User</a>
                         <a class="dropdown-item" data-toggle="tab" href="#dropdown2" data-pick="room">Create Room</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="tab" href="#dropdown3" data-pick="admin">Message Admin</a>
@@ -85,10 +85,10 @@
                     list of Users in which to start chat
                 </div>
                 <div class="tab-pane fade" id="dropdown2">
-                    <h5>CREATE ROOM</h5>
+                    <h5>Create Room</h5>
                     <form>
-=                        <div class="form-group">
-                            <label for="roomTitle">Room Description</label>
+                        <div class="form-group">
+                            <label for="roomTitle">Room Title</label>
                             <textarea class="form-control" id="roomTitle" rows="1"></textarea>
                         </div>
                         <div class="form-group">

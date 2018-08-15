@@ -10,8 +10,12 @@ var config = {
 };
 firebase.initializeApp(config);
 
-$("#chats").on("click", function(){
+//use this to make a call to database and get info for tab selected
+$(".chat_selection").on("click", function(event){
+    thisEvent = event;
+    console.log(event);
+    console.log(thisEvent.currentTarget.dataset.pick);
     //get the data from the user chats out of firebase
     //for each one create a button that has the chat name and users in chat
 
-})
+});
