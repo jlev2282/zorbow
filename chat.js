@@ -50,12 +50,20 @@ $("#create_room").on("click", function(event){
 
 //shows all the current chat rooms when you click on the room tab
 $("#room_tab").on("click", function() {
+    loadRooms();
+});
+
+//populates the room tab on page load
+function loadRooms(){
     $("#roomlist").empty();
     rooms.orderByChild("title").on("child_added", function(data) {
-        chatroom = $("<li>").html("<button class='btn btn-info btn-lg'>"+data.val().title+"</button>");
+        chatroom = $("<div>");
+        room = $("<a href='#'>").attr("data-room", data.val().title);
+        room.text(data.val().title);
+        chatroom.append(room);
         $("#roomlist").prepend(chatroom);
     });
-});
+};
 
 
 rooms.on("value", function(snapshot) {
