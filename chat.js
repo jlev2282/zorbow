@@ -42,7 +42,7 @@ $("#create_room").on("click", function(event){
 
         rooms.push(newRoom);
 
-        $("#chat_stage").html("<a>The <a href='#rooms'"+title+"</a> room has been created. Head over to the 'Rooms' tab to use it.");
+        $("#chat_stage").html("The <a href='#rooms'>"+title+"</a> room has been created. Head over to the 'Rooms' tab to use it.");
         $("#roomTitle").val("");
         $("#roomCategorySelect").val("");
         $("#roomDescription").val("");
