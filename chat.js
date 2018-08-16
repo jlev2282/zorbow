@@ -1,13 +1,13 @@
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDwZ9TkDieYI4AFopofxnHjoCy95vvpdFc",
-    authDomain: "b-b-room.firebaseapp.com",
-    databaseURL: "https://b-b-room.firebaseio.com",
-    projectId: "b-b-room",
-    storageBucket: "b-b-room.appspot.com",
-    messagingSenderId: "224909053616"
-};
+    apiKey: "AIzaSyAL2n8WnuMVOZEWUis9NAT9Q4xQgirNYmA",
+    authDomain: "zorbow-7f5bf.firebaseapp.com",
+    databaseURL: "https://zorbow-7f5bf.firebaseio.com",
+    projectId: "zorbow-7f5bf",
+    storageBucket: "zorbow-7f5bf.appspot.com",
+    messagingSenderId: "712210913728"
+  };
 firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
@@ -32,8 +32,6 @@ $("#create_room").on("click", function(event){
     category = $("#roomCategorySelect").val().trim();
     description = $("#roomDescription").val().trim();
 
-    var r =confirm("Create room "+title+"?");
-
     //only works in full browser, not mobile
     //will assume true and create room
         var newRoom = {
@@ -50,17 +48,23 @@ $("#create_room").on("click", function(event){
         $("#roomDescription").val("");
 });
 
+//shows all the current chat rooms when you click on the room tab
 $("#room_tab").on("click", function() {
     $("#roomlist").empty();
     rooms.orderByChild("title").on("child_added", function(data) {
-        chatroom = $("<li>").html("<a href='#'>"+data.val().title+"</a>");
+        chatroom = $("<li>").html("<button class='btn btn-info btn-lg'>"+data.val().title+"</button>");
         $("#roomlist").prepend(chatroom);
     });
 });
 
+
 rooms.on("value", function(snapshot) {
     // console.log(snapshot.val());
-    $("#rooms").prepend(snapshot.val());
+    // $("#roomlist").empty();
+    // rooms.orderByChild("title").on("child_added", function(data) {
+    //     chatroom = $("<li>").html("<button class='btn btn-info btn-lg'>"+data.val().title+"</button>");
+    //     $("#roomlist").prepend(chatroom);
+    // });
 }, function(error) {
     console.log("Error: "+error.code);
 });
