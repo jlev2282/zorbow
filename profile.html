@@ -12,6 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
+    <div class="container-fluid" style="text-align: center;">
+        <form>
+            <fieldset>
+                <legend>User Profile</legend>
+                <label for="userName" class="col col-form-label">Username</label>
+                <div class="col">
+                    <input class="form-control-plaintext" id="userName" value="" type="text" style="text-align: center; border-color: rebeccapurple;">
+                    <small id="usernameHelp" class="form-text text-muted">Enter your username above</small>
+                </div>
+                <button type="button" id="userUpdate" class="btn btn-lg btn-outline-info">Update</button>
+            </fieldset>
+        </form>
+    </div>
+
 
 
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>

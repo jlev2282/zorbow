@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
 var inRoom = false;
-var username = "Guest";
+var username = localStorage.getItem("name");
 
 
 //use this to make a call to database and get info for tab selected
@@ -82,6 +82,22 @@ function loadChatRoom($room) {
 function updateMessages()
 {
 
+}
+
+$("#userUpdate").on("click", function(){
+    name = $("#userName").val();
+    localStorage.setItem("name", name);
+    redirect();
+});
+
+
+function redirect() {
+    window.location.replace("chat.html");
+    return false;
+}
+
+function getGuest() {
+    $("#user").text("Welcome "+username+"!");
 }
 
 
