@@ -11,6 +11,8 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
+var inRoom = false;
+var username = "Guest";
 
 
 //use this to make a call to database and get info for tab selected
@@ -37,7 +39,7 @@ $("#create_room").on("click", function(event){
         var newRoom = {
             title: title,
             category: category,
-            description: description
+            description: description,
         };
 
         rooms.child(title).set(newRoom);
@@ -53,17 +55,34 @@ $("#room_tab").on("click", function() {
     loadRooms();
 });
 
+function setUserName(){
+
+}
+
 //populates the room tab on page load
 function loadRooms(){
     $("#roomlist").empty();
     rooms.orderByChild("title").on("child_added", function(data) {
         chatroom = $("<div>");
         room = $("<a href='#'>").attr("data-room", data.val().title);
+        room.attr("class", "room");
         room.text(data.val().title);
         chatroom.append(room);
         $("#roomlist").prepend(chatroom);
     });
-};
+}
+
+function loadChatRoom($room) {
+    rooms.child($room).on("value", function(snapshot){
+        console.log(snapshot.val().messages);
+    });
+}
+
+//run this once a room is selected and when user submits new message
+function updateMessages()
+{
+
+}
 
 
 rooms.on("value", function(snapshot) {
@@ -76,3 +95,27 @@ rooms.on("value", function(snapshot) {
 }, function(error) {
     console.log("Error: "+error.code);
 });
+
+//retrieve the chat room for room clicked on and populate with info
+$(document).on("click", ".room", function(event) {
+    $room = $(this)[0].dataset.room;
+    if (inRoom == true) {
+        //prompt user, if they would like to exit current room and go to other room?
+
+    } else {
+        loadChatRoom($room);
+        inRoom = true;
+    }
+});
+
+//updates current chat room when the send button is clicked
+$(document).on("click", "#chat-send", function() {
+    if ($("#chat-input").val() !== "") {
+        var message = $("#chat-input").val();
+        "roomnameref".push({
+            name: username,
+            message: message,
+            time: firebase.database.ServerValue.TIMESTAMP,
+        })
+    }
+})
