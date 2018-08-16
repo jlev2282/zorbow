@@ -12,7 +12,12 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
 var inRoom = false;
-var username = "Guest";
+
+if (localStorage.getItem("name") === null) {
+    var username = "Guest";
+} else {
+    var username = localStorage.getItem("name");
+}
 
 
 //use this to make a call to database and get info for tab selected
@@ -85,8 +90,8 @@ function updateMessages()
 }
 
 $("#userUpdate").on("click", function(){
-    name = $("#userName").val();
-    localStorage.setItem("name", name);
+    username = $("#userName").val();
+    localStorage.setItem("name", username);
     redirect();
 });
 
