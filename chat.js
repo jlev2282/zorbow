@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
 var inRoom = false;
-var username = localStorage.getItem("name");
+var username = "Guest";
 
 
 //use this to make a call to database and get info for tab selected
