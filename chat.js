@@ -53,6 +53,14 @@ $("#create_room").on("click", function(event){
         $("#roomTitle").val("");
         $("#roomCategorySelect").val("");
         $("#roomDescription").val("");
+
+        timeOfCreation = moment().format("X");
+
+        rooms.child(title).child("/messages").push({
+            time: timeOfCreation,
+            user: username,
+            message: "I'm the first message in this chatroom!"
+        })
 });
 
 //shows all the current chat rooms when you click on the room tab
@@ -89,18 +97,19 @@ function updateMessages()
 
 }
 
+// updates the username to the name in localstorage when submit clicked in profile page
 $("#userUpdate").on("click", function(){
     username = $("#userName").val();
     localStorage.setItem("name", username);
     redirect();
 });
 
-
 function redirect() {
     window.location.replace("chat.html");
     return false;
 }
 
+//gets the user name and sets it in footer
 function getGuest() {
     $("#user").text("Welcome "+username+"!");
 }
