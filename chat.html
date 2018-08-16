@@ -15,14 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-    <!--this will be the chat application for Zorbow-->
-    <!--this needs to be mobile first-->
-    <!--mimic the setup of whatsApp-->
-    <!--header bar with Zorbow logo-->
-    <!--menu bar on right that lets you add group-->
-    <!--main panel will have headers "CHATS", "FRIENDS", "ROOMS"-->
-    <!--each tab will populate with data for each that will pop out a modal-->
     <div class="container-fluid">
+        <!--begin nav bar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">ZORBOW</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +50,9 @@
                 </form>
             </div>
         </nav>
-        <div class="container-fluid" style="border: solid;">
+
+        <!--begin chat tab sections-->
+        <div class="container-fluid border-warning" style="border: solid; border-width: thin; border-radius: 5px; min-height: 20vh;">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link chat_selection" data-toggle="tab" id="chat_tab" href="#chats" data-pick="chats">Chats</a>
@@ -74,6 +70,8 @@
                     </div>
                 </li>
             </ul>
+
+            <!--drop down menu-->
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade" id="chats">
                     list of active chats for user to pick<form id="chat_form"></form>
@@ -141,7 +139,22 @@
         </div>
     </div>
 
-    <div class="container-fluid" id="chat_stage">Display Chats Here</div>
+    <!--begin chat room template-->
+    <div class="container-fluid" id="chat_stage" style="margin-top: 5px;">
+        <div class="card border-info mb-3" style="max-width: 100%;">
+            <div class="card-header">Chat Room Title</div>
+            <div class="card-body">
+                <h4 class="card-title">Description of chat room</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+        <div class="form-group border-info">
+            <label for="exampleTextarea">Type message here</label>
+            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            <div style="text-align: center;"><button type="button" class="btn btn-outline-info">Submit</button></div>
+        </div>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
