@@ -107,7 +107,7 @@ function loadChatRoom($room) {
         console.log(snapshot.val());
 
         timeSent = snapshot.val().time;
-        timeSent = moment(timeSent, "x").format("h:m a");
+        timeSent = moment(timeSent, "X").format("h:mm a");
 
         $("#messages").append("<p><span>"+ snapshot.val().user + "</span> ("+timeSent+"): " + snapshot.val().message + "</p>");
 
