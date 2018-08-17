@@ -71,16 +71,16 @@
 
             <!--drop down menu-->
             <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade" id="chats">
+                <div class="tab-pane fade" id="chats" style="min-height: 15vh; max-height: 15vh;">
                     list of active chats for user to pick<form id="chat_form"></form>
                 </div>
-                <div class="tab-pane fade active show" id="rooms">
-                    <div id="roomlist"></div>
+                <div class="tab-pane fade active show" id="rooms" >
+                    <div id="roomlist" style="overflow:auto; max-height: 15vh;"></div>
                 </div>
-                <div class="tab-pane fade" id="dropdown1">
+                <div class="tab-pane fade" id="dropdown1" style="min-height: 15vh;">
                     list of Users in which to start chat
                 </div>
-                <div class="tab-pane fade" id="dropdown2">
+                <div class="tab-pane fade" id="dropdown2" style="min-height: 15vh;">
                     <h5>Create Room</h5>
                     <form>
                         <div class="form-group">
@@ -140,7 +140,7 @@
     <!--begin chat room template-->
     <div class="container-fluid" id="chat_stage" style="margin-top: 10px;">
         <div class="card border-info mb-3" style="max-width: 100%; min-height: 30vh; ">
-            <div class="card-header" id="roomName"></div>
+            <div class="card-header" id="roomName" style=""></div>
             <div class="card-body" id="messages" style="max-height: 20vh; overflow:auto;">
             </div>
         </div>
