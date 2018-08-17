@@ -191,6 +191,6 @@ $(document).on("click", "#chat_send", function() {
         $("#chat_input").val("");
     }
 
-    loadRooms(chosenRoom);
+    loadChatRoom(chosenRoom);
     
 });
