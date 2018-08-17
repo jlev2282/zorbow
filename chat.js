@@ -106,9 +106,10 @@ function loadChatRoom($room) {
     rooms.child($room).child("/messages").on("child_added", function(snapshot){
         console.log(snapshot.val());
 
-        // $("#messages").text(messages.message);
+        timeSent = snapshot.val().time;
+        timeSent = moment(timeSent, "x").format("h:m a");
 
-        $("#messages").append("<p><span>"+ snapshot.val().user + "</span>: " + snapshot.val().message + "</p>");
+        $("#messages").append("<p><span>"+ snapshot.val().user + "</span> ("+timeSent+"): " + snapshot.val().message + "</p>");
 
     });
     $("#messages").scrollTop($("#messages")[0].scrollHeight);
