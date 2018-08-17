@@ -4,3 +4,41 @@
     width: 100%;
     text-align: center;
 }
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  .one {
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+  }
+
+  .two {
+    font-family: 'Gloria Hallelujah', cursive;
+
+  }
+
+  .three {
+    font-family: 'Archivo Black', sans-serif;
+
+  }
+
+  .four {
+    font-family: 'Poiret One', cursive;
+
+  }
+
+  .five {
+    font-family: 'Montserrat Alternates', sans-serif;
+
+  }
+
+  .six {
+    font-family: 'Cabin Sketch', cursive;
+
+  }

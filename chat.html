@@ -143,17 +143,15 @@
     <!--begin chat room template-->
     <div class="container-fluid" id="chat_stage" style="margin-top: 5px;">
         <div class="card border-info mb-3" style="max-width: 100%;">
-            <div class="card-header">Chat Room Title</div>
-            <div class="card-body">
-                <h4 class="card-title">Description of chat room</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card-header" id="roomName"></div>
+            <div class="card-body" id="messages">
             </div>
         </div>
 
         <div class="form-group border-info">
             <label for="exampleTextarea">Type message here</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea><br>
-            <div style="text-align: center;"><button type="button" class="btn btn-outline-info">Submit</button></div>
+            <textarea class="form-control" id="chat_input" rows="3"></textarea><br>
+            <div style="text-align: center;"><button type="button" class="btn btn-outline-info" id="chat_send">Submit</button></div>
         </div>
     </div>
 

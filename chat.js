@@ -139,13 +139,14 @@ $(document).on("click", ".room", function(event) {
 });
 
 //updates current chat room when the send button is clicked
-$(document).on("click", "#chat-send", function() {
-    if ($("#chat-input").val() !== "") {
-        var message = $("#chat-input").val();
-        "roomnameref".push({
+$(document).on("click", "#chat_send", function() {
+    if ($("#chat_input").val() !== "") {
+        var message = $("#chat_input").val().trim();
+        timeOfCreation = moment().format("X");
+        rooms.child(title).child("/messages").push({
             name: username,
             message: message,
-            time: firebase.database.ServerValue.TIMESTAMP,
+            time: timeOfCreation,
         })
     }
 })
