@@ -42,3 +42,7 @@
     font-family: 'Cabin Sketch', cursive;
 
   }
+
+  body {
+    background-image: url('assets/images/galactic1.jpeg');
+  }  
