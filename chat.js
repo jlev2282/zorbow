@@ -183,11 +183,11 @@ $(document).on("click", "#chat_send", function() {
         var message = $("#chat_input").val().trim();
         timeOfCreation = moment().format("X");
         rooms.child(chosenRoom).child("/messages").push({
-            name: username,
+            user: username,
             message: message,
             time: timeOfCreation,
         })
-        $("#chat_input").empty();
+        $("#chat_input").val("");
     }
 
     loadRooms(chosenRoom);
