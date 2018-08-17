@@ -105,7 +105,7 @@ function loadChatRoom($room) {
     $("#messages").empty();
     $("#roomName").text($room);
     rooms.child($room).child("/messages").on("child_added", function(snapshot){
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
 
         timeSent = snapshot.val().time;
         timeSent = moment(timeSent, "X").format("h:mm a");
