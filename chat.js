@@ -1,3 +1,12 @@
+// $(document).ready(function(){
+//     $(".one").fadeIn(500);
+//     $(".two").fadeIn(1000);
+//     $(".three").fadeIn(1500);
+//     $(".four").fadeIn(2000);
+//     $(".five").fadeIn(2500);
+//     $(".six").fadeIn(3000);
+// });
+
 
 // Initialize Firebase
 var config = {
