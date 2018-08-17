@@ -5,6 +5,14 @@
     text-align: center;
 }
 
+.home_footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .centered {
     position: fixed;
     top: 50%;
