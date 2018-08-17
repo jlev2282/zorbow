@@ -175,7 +175,7 @@ $(document).on("click", ".room", function(event) {
 
     } else {
         loadChatRoom($room);
-        localStorage.setItem("inRoom", "true");
+        inRoom = true;
     }
 });
 
