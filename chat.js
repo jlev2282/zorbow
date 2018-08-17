@@ -11,8 +11,13 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
-var inRoom = false;
-var title;
+if (localStorage.getItem("inRoom") === null) {
+    var inRoom = false;
+} else {
+    var inRoom = localStorage.getItem("inRoom");
+}
+
+var chosenRoom;
 
 if (localStorage.getItem("name") === null) {
     var username = "Guest";
@@ -91,21 +96,32 @@ function loadChatRoom($room) {
         currentRoom = snapshot.val().title;
         messages = snapshot.val().messages
         $("#roomName").text(currentRoom);
-        $("#messages").text(messages.message);
-        console.log(snapshot.val().messages);
+        // $("#messages").text(messages.message);
+
+        // $("#messages").append("<p><span>"+ snapshot.val().messages.user + "</span>: " + snapshot.val().message + "</p>");
+
     });
+
+    // rooms.child($room).child("/messages").orderByChild("time").on("value", function(snapshot) {
+    //     console.log(snapshot);
+
+    //     // Keeps div scrolled to bottom on each update.
+    //     $("#messages").scrollTop($("#messages")[0].scrollHeight);
+    // });
 }
 
 //run this once a room is selected and when user submits new message
-if (inRoom == true) {
-    // Update chat on screen when new message detected - ordered by 'time' value
-    rooms.child(title).child("/messages").orderByChild("time").on("child_added", function(snapshot) {
-        $("#messages").append("<p><span>"+ snapshot.val().user + "</span>: " + snapshot.val().message + "</p>");
+// if (inRoom == true) {
+//     // Update chat on screen when new message detected - ordered by 'time' value
+//     rooms.child(chosenRoom).child("/messages").orderByChild("time").on("child_added", function(data) {
+//         alert("Info added!");
+//         currentMessage = data.val();
+//         $("#messages").append("<p><span>"+ currentMessage.user + "</span>: " + currentMessage.message + "</p>");
 
-        // Keeps div scrolled to bottom on each update.
-        $("#messages").scrollTop($("#messages")[0].scrollHeight);
-    });
-}
+//         // Keeps div scrolled to bottom on each update.
+//         $("#messages").scrollTop($("#messages")[0].scrollHeight);
+//     });
+// }
 
 
 // updates the username to the name in localstorage when submit clicked in profile page
@@ -126,26 +142,27 @@ function getGuest() {
 }
 
 
-rooms.on("value", function(snapshot) {
-    // console.log(snapshot.val());
-    // $("#roomlist").empty();
-    // rooms.orderByChild("title").on("child_added", function(data) {
-    //     chatroom = $("<li>").html("<button class='btn btn-info btn-lg'>"+data.val().title+"</button>");
-    //     $("#roomlist").prepend(chatroom);
-    // });
-}, function(error) {
-    console.log("Error: "+error.code);
-});
+// rooms.on("value", function(snapshot) {
+//     // console.log(snapshot.val());
+//     // $("#roomlist").empty();
+//     // rooms.orderByChild("title").on("child_added", function(data) {
+//     //     chatroom = $("<li>").html("<button class='btn btn-info btn-lg'>"+data.val().title+"</button>");
+//     //     $("#roomlist").prepend(chatroom);
+//     // });
+// }, function(error) {
+//     console.log("Error: "+error.code);
+// });
 
 //retrieve the chat room for room clicked on and populate with info
 $(document).on("click", ".room", function(event) {
     $room = $(this)[0].dataset.room;
+    chosenRoom = $room;
     if (inRoom == true) {
         //prompt user, if they would like to exit current room and go to other room?
 
     } else {
         loadChatRoom($room);
-        inRoom = true;
+        localStorage.setItem("inRoom", true);
     }
 });
 
@@ -154,7 +171,7 @@ $(document).on("click", "#chat_send", function() {
     if ($("#chat_input").val() !== "") {
         var message = $("#chat_input").val().trim();
         timeOfCreation = moment().format("X");
-        rooms.child(title).child("/messages").push({
+        rooms.child(chosenRoom).child("/messages").push({
             name: username,
             message: message,
             time: timeOfCreation,
