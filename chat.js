@@ -18,9 +18,10 @@ var config = {
     messagingSenderId: "712210913728"
   };
 firebase.initializeApp(config);
+localStorage.setItem("inRoom", "null");
 var database = firebase.database();
 var rooms = database.ref("/rooms");
-if (localStorage.getItem("inRoom") === null) {
+if (localStorage.getItem("inRoom") == "null") {
     var inRoom = false;
 } else {
     var inRoom = localStorage.getItem("inRoom");
@@ -63,8 +64,8 @@ $("#create_room").on("click", function(event){
         };
 
         rooms.child(title).set(newRoom);
-
-        $("#chat_stage").html("The <a href='#rooms'>"+title+"</a> room has been created. Head over to the 'Rooms' tab to use it.");
+        $("#roomName").text("Congratulations "+username+"!");
+        $("#messages").html("The "+title+" room has been created. Head over to the 'Rooms' tab to use it.");
         $("#roomTitle").val("");
         $("#roomCategorySelect").val("");
         $("#roomDescription").val("");
@@ -174,23 +175,30 @@ $(document).on("click", ".room", function(event) {
 
     } else {
         loadChatRoom($room);
-        localStorage.setItem("inRoom", true);
+        localStorage.setItem("inRoom", "true");
     }
 });
 
 //updates current chat room when the send button is clicked
 $(document).on("click", "#chat_send", function() {
-    if ($("#chat_input").val() !== "") {
-        var message = $("#chat_input").val().trim();
-        timeOfCreation = moment().format("X");
-        rooms.child(chosenRoom).child("/messages").push({
-            user: username,
-            message: message,
-            time: timeOfCreation,
-        })
-        $("#chat_input").val("");
+    input = $("#chat_input");
+    if (inRoom === false) {
+        input.val("");
+        return false;
+    } else {
+        if (input.val() !== "") {
+            var message = input.val().trim();
+            timeOfCreation = moment().format("X");
+            rooms.child(chosenRoom).child("/messages").push({
+                user: username,
+                message: message,
+                time: timeOfCreation
+            });
+            input.val("");
+        }
+
+        loadChatRoom(chosenRoom);
     }
 
-    loadChatRoom(chosenRoom);
     
 });
