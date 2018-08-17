@@ -170,13 +170,8 @@ function getGuest() {
 $(document).on("click", ".room", function(event) {
     $room = $(this)[0].dataset.room;
     chosenRoom = $room;
-    if (inRoom == true) {
-        //prompt user, if they would like to exit current room and go to other room?
-
-    } else {
         loadChatRoom($room);
         inRoom = true;
-    }
 });
 
 //updates current chat room when the send button is clicked
