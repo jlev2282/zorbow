@@ -18,17 +18,34 @@
           /*html {*/
             /*background-image: url(assets/images/galactic3.jpg);*/
           /*}  */
-        html {
-            background: url(assets/images/galactic4.jpeg) no-repeat center center fixed;
-            background-size: cover;
+        /*html {*/
+            /*background: url(assets/images/galactic4.jpeg) no-repeat center center fixed;*/
+            /*background-size: cover;*/
+            /*height: 100%;*/
+            /*overflow: hidden;*/
+        /*}*/
+
+        body, html {
             height: 100%;
-            overflow: hidden;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url(assets/images/galactic4.jpeg);
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid bg">
 
         <div class="centered">
             <p class="one" ><a href="profile.html">ZORBOW</a></p>
