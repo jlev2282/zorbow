@@ -101,21 +101,23 @@ function loadRooms(){
 }
 
 function loadChatRoom($room) {
-    rooms.child($room).on("value", function(snapshot){
-        currentRoom = snapshot.val().title;
-        messages = snapshot.val().messages
-        $("#roomName").text(currentRoom);
+    $("#messages").empty();
+    $("#roomName").text($room);
+    rooms.child($room).child("/messages").on("child_added", function(snapshot){
+        console.log(snapshot.val());
+
         // $("#messages").text(messages.message);
 
-        // $("#messages").append("<p><span>"+ snapshot.val().messages.user + "</span>: " + snapshot.val().message + "</p>");
+        $("#messages").append("<p><span>"+ snapshot.val().user + "</span>: " + snapshot.val().message + "</p>");
 
     });
+    $("#messages").scrollTop($("#messages")[0].scrollHeight);
+
 
     // rooms.child($room).child("/messages").orderByChild("time").on("value", function(snapshot) {
     //     console.log(snapshot);
 
     //     // Keeps div scrolled to bottom on each update.
-    //     $("#messages").scrollTop($("#messages")[0].scrollHeight);
     // });
 }
 
@@ -185,6 +187,9 @@ $(document).on("click", "#chat_send", function() {
             message: message,
             time: timeOfCreation,
         })
+        $("#chat_input").empty();
     }
+
+    loadRooms(chosenRoom);
     
-})
+});
