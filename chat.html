@@ -52,12 +52,15 @@
         <!--begin chat tab sections-->
         <div class="container-fluid border-warning" style="border: solid; border-width: thin; border-radius: 5px; min-height: 20vh; max-height: 60vh; overflow: auto;">
             <ul class="nav nav-tabs">
-                <li class="nav-item">
+                <li class="nav-item" >
                     <a class="nav-link chat_selection" data-toggle="tab" id="chat_tab" href="#chats" data-pick="chats">Chats</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" >
                     <a class="nav-link active chat_selection show" data-toggle="tab" id="room_tab" href="#rooms" data-pick="rooms">Rooms</a>
                 </li>
+                <!--<li class="nav-item" >-->
+                    <!--<a class="nav-link  chat_selection " data-toggle="tab" id="room_details_tab" href="#details" data-pick="room_details">Details</a>-->
+                <!--</li>-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 39px, 0px);">
@@ -67,6 +70,7 @@
                         <a class="dropdown-item" data-toggle="tab" href="#dropdown3" data-pick="admin">Message Admin</a>
                     </div>
                 </li>
+
             </ul>
 
             <!--drop down menu-->
@@ -132,6 +136,9 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="tab-pane fade" id="details" >
+                    <div id="room_details" style="overflow:auto; max-height: 15vh;"></div>
                 </div>
             </div>
         </div>
