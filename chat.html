@@ -139,15 +139,15 @@
 
     <!--begin chat room template-->
     <div class="container-fluid" id="chat_stage" style="margin-top: 5px;">
-        <div class="card border-info mb-3" style="max-width: 100%; min-height: 30vh;">
+        <div class="card border-info mb-3" style="max-width: 100%; min-height: 30vh; overflow:auto;">
             <div class="card-header" id="roomName"></div>
-            <div class="card-body" id="messages">
+            <div class="card-body" id="messages" style="max-height: 30vh;">
             </div>
         </div>
 
         <div class="form-group border-info">
-            <label for="exampleTextarea">Type message here</label>
-            <textarea class="form-control" id="chat_input" rows="3"></textarea><br>
+            <label for="chat_input">Type message here</label>
+            <textarea class="form-control border-warning" id="chat_input" rows="3" style="background-color:black; color: deepskyblue;"></textarea><br>
             <div style="text-align: center;"><button type="button" class="btn btn-outline-info" id="chat_send">Submit</button></div>
         </div>
     </div>
