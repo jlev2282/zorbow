@@ -12,6 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var rooms = database.ref("/rooms");
 var inRoom = false;
+var title;
 
 if (localStorage.getItem("name") === null) {
     var username = "Guest";
@@ -87,15 +88,25 @@ function loadRooms(){
 
 function loadChatRoom($room) {
     rooms.child($room).on("value", function(snapshot){
+        currentRoom = snapshot.val().title;
+        messages = snapshot.val().messages
+        $("#roomName").text(currentRoom);
+        $("#messages").text(messages.message);
         console.log(snapshot.val().messages);
     });
 }
 
 //run this once a room is selected and when user submits new message
-function updateMessages()
-{
+if (inRoom == true) {
+    // Update chat on screen when new message detected - ordered by 'time' value
+    rooms.child(title).child("/messages").orderByChild("time").on("child_added", function(snapshot) {
+        $("#messages").append("<p><span>"+ snapshot.val().user + "</span>: " + snapshot.val().message + "</p>");
 
+        // Keeps div scrolled to bottom on each update.
+        $("#messages").scrollTop($("#messages")[0].scrollHeight);
+    });
 }
+
 
 // updates the username to the name in localstorage when submit clicked in profile page
 $("#userUpdate").on("click", function(){
@@ -149,4 +160,5 @@ $(document).on("click", "#chat_send", function() {
             time: timeOfCreation,
         })
     }
+    
 })
