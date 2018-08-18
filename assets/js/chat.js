@@ -208,6 +208,8 @@ function googleSignin() {
       var token = result.credential.accessToken;
       user = result.user;
     //   console.log(token)
+    localStorage.setItem("signedIn", "true");		
+
       console.log(user)
    }).catch(function(error) {
       var errorCode = error.code;
@@ -216,7 +218,6 @@ function googleSignin() {
       console.log(errorCode)
       console.log(errorMessage)
    });
-   localStorage.setItem("signedIn", "true");		
    getGuest();
 }
 
