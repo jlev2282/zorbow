@@ -102,6 +102,7 @@ function loadRooms(){
 }
 
 function loadChatRoom($room) {
+    $("#roomlist").empty();
     $("#messages").empty();
     $("#roomName").text($room);
     rooms.child($room).child("/messages").on("child_added", function(snapshot){
@@ -153,18 +154,6 @@ function redirect() {
 function getGuest() {
     $("#user").text("Welcome "+username+"!");
 }
-
-
-// rooms.on("value", function(snapshot) {
-//     // console.log(snapshot.val());
-//     // $("#roomlist").empty();
-//     // rooms.orderByChild("title").on("child_added", function(data) {
-//     //     chatroom = $("<li>").html("<button class='btn btn-info btn-lg'>"+data.val().title+"</button>");
-//     //     $("#roomlist").prepend(chatroom);
-//     // });
-// }, function(error) {
-//     console.log("Error: "+error.code);
-// });
 
 //retrieve the chat room for room clicked on and populate with info
 $(document).on("click", ".room", function(event) {
