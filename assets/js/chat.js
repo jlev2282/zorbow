@@ -21,6 +21,7 @@ firebase.initializeApp(config);
 localStorage.setItem("inRoom", "null");
 var database = firebase.database();
 var rooms = database.ref("/rooms");
+var signedIn = false;
 if (localStorage.getItem("inRoom") == "null") {
     var inRoom = false;
 } else {
@@ -152,7 +153,11 @@ function redirect() {
 
 //gets the user name and sets it in footer
 function getGuest() {
-    $("#user").text("Welcome "+username+"!");
+    if (signedIn === false) {
+            $("#user").text("Welcome "+username+"!");
+    } else {
+        $("#user").text("Welcome "+username+"! You are signed in as "+user+".");
+    }
 }
 
 //retrieve the chat room for room clicked on and populate with info
@@ -186,3 +191,36 @@ $(document).on("click", "#chat_send", function() {
 
     
 });
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+function googleSignin() {
+   firebase.auth()
+   
+   .signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+      signedIn = true;
+		
+      console.log(token)
+      console.log(user)
+   }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+		
+      console.log(errorCode)
+      console.log(errorMessage)
+   });
+}
+
+function googleSignout() {
+   firebase.auth().signOut()
+  
+	
+   .then(function() {
+    window.location.replace("index.html");
+    //   console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}

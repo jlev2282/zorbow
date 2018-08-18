@@ -1,29 +1,31 @@
-var provider = new firebase.auth.GoogleAuthProvider();
+// var provider = new firebase.auth.GoogleAuthProvider();
 
-function googleSignin() {
-   firebase.auth()
+// function googleSignin() {
+//    firebase.auth()
    
-   .signInWithPopup(provider).then(function(result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
+//    .signInWithPopup(provider).then(function(result) {
+//       var token = result.credential.accessToken;
+//       var user = result.user;
 		
-      console.log(token)
-      console.log(user)
-   }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
+//       console.log(token)
+//       console.log(user)
+//    }).catch(function(error) {
+//       var errorCode = error.code;
+//       var errorMessage = error.message;
 		
-      console.log(error.code)
-      console.log(error.message)
-   });
-}
+//       console.log(errorCode)
+//       console.log(errorMessage)
+//    });
+// }
 
-function googleSignout() {
-   firebase.auth().signOut()
+// function googleSignout() {
+//    firebase.auth().signOut()
+  
 	
-   .then(function() {
-      console.log('Signout Succesfull')
-   }, function(error) {
-      console.log('Signout Failed')  
-   });
-}
+//    .then(function() {
+//     window.location.replace("index.html");
+//     //   console.log('Signout Succesfull')
+//    }, function(error) {
+//       console.log('Signout Failed')  
+//    });
+// }
