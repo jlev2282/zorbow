@@ -201,6 +201,7 @@ function googleSignin() {
       var token = result.credential.accessToken;
       var user = result.user;
       signedIn = true;
+      getGuest();
 		
       console.log(token)
       console.log(user)
