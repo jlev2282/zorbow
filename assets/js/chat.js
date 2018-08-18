@@ -21,7 +21,11 @@ firebase.initializeApp(config);
 localStorage.setItem("inRoom", "null");
 var database = firebase.database();
 var rooms = database.ref("/rooms");
-var signedIn = false;
+if (localStorage.getItem("signedIn") == "null") {
+    var signedIn = false;
+} else {
+    var signedIn = localStorage.getItem("signedIn");
+}
 if (localStorage.getItem("inRoom") == "null") {
     var inRoom = false;
 } else {
@@ -200,7 +204,7 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-      signedIn = true;
+      localStorage.setItem("signedIn", "true");
       getGuest();
 		
       console.log(token)
