@@ -207,10 +207,7 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       user = result.user;
-      localStorage.setItem("signedIn", "true");
-      getGuest();
-		
-      console.log(token)
+    //   console.log(token)
       console.log(user)
    }).catch(function(error) {
       var errorCode = error.code;
@@ -219,6 +216,8 @@ function googleSignin() {
       console.log(errorCode)
       console.log(errorMessage)
    });
+   localStorage.setItem("signedIn", "true");		
+   getGuest();
 }
 
 function googleSignout() {
