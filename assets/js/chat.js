@@ -223,7 +223,8 @@ function googleSignout() {
   
 	
    .then(function() {
-    window.location.replace("index.html");
+        localStorage.setItem("signedIn", false);
+        window.location.replace("index.html");
     //   console.log('Signout Succesfull')
    }, function(error) {
       console.log('Signout Failed')  
