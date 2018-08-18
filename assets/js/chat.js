@@ -18,9 +18,12 @@ var config = {
     messagingSenderId: "712210913728"
   };
 firebase.initializeApp(config);
-localStorage.setItem("inRoom", "null");
+var provider = new firebase.auth.GoogleAuthProvider();
 var database = firebase.database();
 var rooms = database.ref("/rooms");
+var user;
+localStorage.setItem("inRoom", "null");
+localStorage.setItem("signedIn", "null");
 if (localStorage.getItem("signedIn") == "null") {
     var signedIn = false;
 } else {
@@ -158,7 +161,7 @@ function redirect() {
 //gets the user name and sets it in footer
 function getGuest() {
     if (signedIn === false) {
-            $("#user").text("Welcome "+username+"!");
+        $("#user").text("Welcome "+username+"!");
     } else {
         $("#user").text("Welcome "+username+"! You are signed in as "+user+".");
     }
@@ -196,14 +199,14 @@ $(document).on("click", "#chat_send", function() {
     
 });
 
-var provider = new firebase.auth.GoogleAuthProvider();
+
 
 function googleSignin() {
    firebase.auth()
    
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
-      var user = result.user;
+      user = result.user;
       localStorage.setItem("signedIn", "true");
       getGuest();
 		
