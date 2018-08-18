@@ -68,3 +68,19 @@
     min-width: 50%;
     min-height: 50%;
 }
+
+.info{
+    margin-top: 10px;
+    border: solid; 
+    border-width: thin; 
+    border-radius: 5px; 
+    min-height: 20vh; 
+    max-height: 60vh; 
+    overflow: auto;
+}
+
+.game_card {
+    max-width: 100%;
+    min-height: 30vh;
+
+}
