@@ -22,8 +22,8 @@ function loadChoices(){
     $("#subjects").empty();
     subjects.orderByChild("subject").on("child_added", function(data) {
         game = $("<div>");
-        subject = $("<a href='#'>").attr("data-room", data.val().subject);
-        subject.attr("class", "room");
+        subject = $("<a href='#'>").attr("data-subject", data.val().subject);
+        subject.attr("class", "subject");
         subject.text(data.val().subject);
         game.append(subject);
         $("#subjects").prepend(game);
@@ -31,12 +31,20 @@ function loadChoices(){
     //pull the options under path games/choices
 }
 
+//loads selected subject
+$(document).on("click", ".subject", function(event) {
+    $subject = $(this)[0].dataset.subject;
+    chosenSubject = $subject;
+    runGameChoice(chosenSubject);
+    inGame = true;
+});
+
 
 function runGameChoice(choice){
-
+    alert(choice+" game is about to begin!");
 }
 
 $("#game_choice").on("click", function(){
     choice = $("#game_choices").val();
-    chooseGame(choice);
+    runGameChoice(choice);
 })
