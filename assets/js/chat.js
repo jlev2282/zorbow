@@ -110,17 +110,23 @@ function loadRooms(){
 }
 
 function loadChatRoom($room) {
-    $("#roomlist").empty();
+    // $("#roomlist").empty();
     $("#messages").empty();
-    $("#roomName").text($room);
+
+    rooms.child($room).on("value", function(snapshot){
+         details = snapshot.val().description;
+         console.log(details);
+       $("#roomdetails").text(details);
+       $("#roomName").text($room+" room: "+details);
+
+
+    });
     rooms.child($room).child("/messages").on("child_added", function(snapshot){
         // console.log(snapshot.val());
 
         timeSent = snapshot.val().time;
         timeSent = moment(timeSent, "X").format("h:mm a");
-
         $("#messages").append("<p><span>"+ snapshot.val().user + "</span> ("+timeSent+"): " + snapshot.val().message + "</p>");
-
     });
     $("#messages").scrollTop($("#messages")[0].scrollHeight);
 
