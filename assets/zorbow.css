@@ -84,3 +84,8 @@
     min-height: 30vh;
 
 }
+
+#roomName {
+    color: white;
+    min-height: 3vh;
+}
