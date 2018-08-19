@@ -3,15 +3,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
+    <title>About Zorbow</title>
+    <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--cyborg bootstrap cdn-->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-4DAPMwiyOJv/C/LvTiUsW5ueiD7EsaAhwUKO0Llp+fWzT40XrmAbayhVP00bAJVa" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/zorbow.css">
-
 </head>
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <!--begin nav bar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="index.html">ZORBOW</a>
@@ -30,11 +30,8 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="chat.html" id="chat">CHAT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">ABOUT</a>
-                        </li>
                         <li class="nav-item active">
-                                <a class="nav-link" href="about.html">ADMIN<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="about.html">ABOUT<span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-outline-success" onclick = "googleSignin()">Sign In</button>
@@ -42,32 +39,21 @@
                 </div>
         </nav>
 
-        <div class="container border-warning info">
-            <h4>Admin</h4>
-            <form >
-            <div class="form-group" id="collection_selection">
-                    <select class="custom-select">
-                    <option selected="">Pick a Collection to alter</option>
-                    </select>
-            </div>
-            <div class="form-group">
-                <label for="new_value">Enter New Collection Value Below</label>
-                <input type="text" class="form-control" id="new_value"  placeholder="What's it called?">
-            </div>
-            <div class="form-group" style="text-align: center;">
-                <button type="button" id="add_value" class="btn btn-success">Add</button>
-                <button type="button" id="delete_value" class="btn btn-danger">Delete</button>
-            </div>
-        </form>
-        </div>
-        
-    </div>    
+        <p>
+            Zorbow was created in 1989 by Vincent Fitzgerald, the founder of Abby Educational Products. Mr. Fitzgerald designed Zorbow
+            as a way to eleviate the stress that some children experience in learning Math, but turning the learning process into a game.
+            His hope was that through the spirit of competition, children who struggled with Math would grow confident in their abilities.
+            I was one of those children that played one of the earliest versions of Zorbow. Mr. Fitzgerald and his game not only helped me 
+            see that learning can be fun, but that there are many ways to learn. This version of Zorbow is an update to the original while 
+            still embodying the structure and intent of the game. The product is free to use. Enjoy!
+        </p>
+    </div>
+
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="assets/js/auth.js"></script>
 
 </body>
 </html>
