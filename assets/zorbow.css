@@ -87,5 +87,7 @@
 
 #roomName {
     color: white;
-    min-height: 3vh;
+    min-height: 4vh;
+    max-height: 5vh;
+    /* overflow: auto; */
 }
