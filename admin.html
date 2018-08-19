@@ -11,24 +11,56 @@
 
 </head>
 <body>
-    this page should have a form that populates with the collections
-    you pick one, hit submit and it brings everything within that collection
-    <div class="container">
-        <form>
+    <div class="container-fluid ">
+        <!--begin nav bar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="index.html">ZORBOW</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">PROFILE</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="game.html">GAMES</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="chat.html" id="chat">CHAT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">ABOUT</a>
+                        </li>
+                        <li class="nav-item active">
+                                <a class="nav-link" href="#">ADMIN<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-success" onclick = "googleSignin()">Sign In</button>
+                    <button type="button" class="btn btn-outline-danger" onclick = "googleSignout()">Sign Out</button>
+                </div>
+        </nav>
+
+        <div class="container border-warning info">
+            <h4>Admin</h4>
+            <form >
             <div class="form-group" id="collection_selection">
                     <select class="custom-select">
                     <option selected="">Pick a Collection to alter</option>
                     </select>
             </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="email@example.com">
-                </div>
+            <div class="form-group">
+                <label for="new_value">Enter New Collection Value Below</label>
+                <input type="text" class="form-control" id="new_value"  placeholder="What's it called?">
             </div>
-            <button type="button" class="btn btn-success">Success</button>
-            <button type="button" class="btn btn-danger">Danger</button>
+            <div class="form-group" style="text-align: center;">
+                <button type="button" id="add_value" class="btn btn-success">Add</button>
+                <button type="button" id="delete_value" class="btn btn-danger">Delete</button>
+            </div>
         </form>
+        </div>
+        
     </div>    
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>

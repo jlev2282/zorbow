@@ -8,6 +8,8 @@ var config = {
     messagingSenderId: "712210913728"
   };
 firebase.initializeApp(config);
+var database = firebase.database();
+var subjects = database.ref("/games").child("/subjects");
 
 //controls the selection and loading of game
 function chooseGame(choice){
@@ -17,9 +19,18 @@ function chooseGame(choice){
 //puts the options from firebase onto the screen 
 function loadChoices(){
     //conect with firebase
-
+    $("#subjects").empty();
+    subjects.orderByChild("title").on("child_added", function(data) {
+        game = $("<div>");
+        subject = $("<a href='#'>").attr("data-room", data.val().title);
+        subject.attr("class", "room");
+        subject.text(data.val().title);
+        game.append(subject);
+        $("#subjects").prepend(game);
+    });
     //pull the options under path games/choices
 }
+
 
 function runGameChoice(choice){
 
