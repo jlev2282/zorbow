@@ -46,10 +46,24 @@
                 </div>
         </nav>
 
-        <div class="card border-warning info" id="game_info">
-            <div class="card-header">Pick a subject</div>
-            <div class="card-body" id="subjects" style="max-height: 20vh; overflow:auto;">
+        <div class="container border-warning info" id="game_info">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item" >
+                        <a class="nav-link active chat_selection show" data-toggle="tab" id="game_tab" href="#games" data-pick="games">Games</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link  chat_selection " data-toggle="tab" id="practice_tab" href="#practice_games" data-pick="practice">Practice</a>
+                    </li>
+                </ul>
 
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active show" id="games" style="text-align: center;" >
+                        <div id="subjects" style="overflow:auto; max-height: 15vh;"></div>
+                    </div>
+                    <div class="tab-pane fade active show" id="practice_games" style="text-align: center;" >
+                        <div id="practice" style="overflow:auto; max-height: 15vh;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
