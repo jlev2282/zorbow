@@ -31,5 +31,17 @@ $(document).on("click", ".subject", function(event) {
 
 
 function runGameChoice(choice){
+    // 1. add a new game to games/gameplay collection
+    // 2. add number of players to gameplay/game/playercount
+    // 3. add user(s) to gameplay/game/players
+    // 4. add subject to gameplay/game/subject
+    // 5. set score of each user to zero
+    // 6. set time to 5:00 in seconds of gameplay/game/timer
+    // 7. call function to give each player 6 random cards
+    // 8. run startGame function
     alert(choice+" game is about to begin!");
+}
+
+function startGame() {
+
 }
